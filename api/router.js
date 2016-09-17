@@ -6,12 +6,8 @@ const vehicleRouter = require('./resources/vehicles/vehicleRouter.js');
 
 router.use('/vehicle', vehicleRouter);
 
-router.post('/*', (req, res) => {
-    res.send(400);
-});
-
-router.get('/*', (req, res) => {
-    res.send(400);
+router.use('/*', (req, res) => {
+    res.sendStatus(400);
 });
 
 module.exports = router;

@@ -2,12 +2,15 @@
 // of all of SmartCar's supported manufacturerers
 
 const express = require('express');
+const morgan = require('morgan');
 const router = require('./router.js');
 
 const app = express();
 
-const port = 3000;
+let port;
+process.env.HOST_ENV === 'prod' ? port = 80 : port = 3000;
 
+process.env.HOST_ENV === 'prod' ? app.use(morgan('prod')) : app.use(morgan('dev'));
 app.use(router); 
 
 app.listen(port, (err) => {
