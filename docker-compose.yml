@@ -1,0 +1,22 @@
+ version: '2'
+ services:
+    smartcar-api:
+        build: api
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./api:/usr/smartcar/api
+            # Mount the node folders as empty volumes on Docker container
+            # This prevents symlink issues between the container and the host filesystem
+            - /usr/smartcar/api/node_modules
+        links:
+            - smartcar-gm
+        command: npm start
+    smartcar-gm:
+        build: gm
+        volumes:
+            - ./gm:/usr/smartcar/gm
+            - /usr/smartcar/gm/node_modules
+        command: npm start
+    # Any further manufacturer implementations can be inserted here.
+    
