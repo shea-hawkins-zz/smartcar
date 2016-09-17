@@ -18,7 +18,9 @@ module.exports.determineVehicleMake = function(id) {
 };
 
 module.exports.determineValidRoute = function(method, route) {
-    return routes[method][route];
+    if (routes[method]) {
+        return routes[method][route];
+    }
 };
 
 module.exports.getErrorMessage = function(err) {
