@@ -1,5 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
+const router = require('./router');
+
 const app = express();
 
 // The translator service is not exposed to the host machine, and therefore
@@ -7,6 +9,8 @@ const app = express();
 const port = 80;
 
 process.env.HOST_ENV === 'prod' ? app.use(morgan('prod')) : app.use(morgan('dev'));
+
+app.use(router);
 
 app.listen(port, (err) => {
     if (err) {
