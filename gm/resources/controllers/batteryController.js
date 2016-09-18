@@ -10,7 +10,7 @@ const {
 module.exports = function(req, res) {
     getEnergy(req.params.id)
         .then(info => {
-            res.send(formatFuelInfo(info.data, 'batteryLevel'));
+            res.send(formatFuelInfo(info, 'batteryLevel'));
         })
         .catch(err => {
             res.status(400).send(err);

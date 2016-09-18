@@ -9,7 +9,7 @@ const {
 module.exports = function(req, res) {
     getEnergy(req.params.id)
         .then(info => {
-            res.send(formatFuelInfo(info.data, 'tankLevel'));
+            res.send(formatFuelInfo(info, 'tankLevel'));
         })
         .catch(err => {
             console.log(err);

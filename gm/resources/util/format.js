@@ -8,7 +8,8 @@ module.exports.formatDoorInfo = function(info) {
     });
 };
 
-module.exports.formatFuelInfo = function(data, fuelType) {
+module.exports.formatFuelInfo = function(info, fuelType) {
+    const data = info.data;
     let percent;
     if (data[fuelType]['type'] === "Number") {
         percent = Number(data[fuelType]['value']);
@@ -33,4 +34,14 @@ module.exports.formatVehicleInfo = function(info) {
         "doorCount": doorCount,
         "driveTrain": info.data.driveTrain.value
     };
+};
+
+module.exports.formatEngineInfo = function(info) {
+    let status;
+    if (info.actionResult.status.toLowerCase() === 'executed') {
+        status = 'success';
+    } else {
+        status = 'error';
+    }
+    return { status };
 };
