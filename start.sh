@@ -1,1 +1,1 @@
-docker-compose up
+. config.sh && docker-compose up

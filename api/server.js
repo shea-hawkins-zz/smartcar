@@ -9,9 +9,9 @@ const router = require('./router.js');
 const app = express();
 
 let port;
-process.env.HOST_ENV === 'prod' ? port = 80 : port = 3000;
+process.env.HOST_ENV === 'PROD' ? port = 80 : port = 3000;
 
-process.env.HOST_ENV === 'prod' ? app.use(morgan('prod')) : app.use(morgan('dev'));
+process.env.HOST_ENV === 'PROD' ? app.use(morgan('prod')) : app.use(morgan('dev'));
 
 app.use(bodyParser.json());
 app.use(router); 

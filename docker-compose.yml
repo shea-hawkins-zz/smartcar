@@ -8,15 +8,20 @@
             - ./api:/usr/smartcar/api
             # Mount the node folders as empty volumes on Docker container
             # This prevents symlink issues between the container and the host filesystem
+            # but still enables live code updates for dev environments.
             - /usr/smartcar/api/node_modules
         links:
             - smartcar-gm
+        environment:
+            - HOST_ENV=${HOST_ENV}
         command: npm start
     smartcar-gm:
         build: gm
         volumes:
             - ./gm:/usr/smartcar/gm
             - /usr/smartcar/gm/node_modules
+        environment:
+            - HOST_ENV=${HOST_ENV}
         command: npm start
     # Any further manufacturer implementations can be inserted here.
     

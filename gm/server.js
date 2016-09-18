@@ -9,7 +9,7 @@ const app = express();
 // no development conflicts with port 80 are possible.
 const port = 80;
 
-process.env.HOST_ENV === 'prod' ? app.use(morgan('prod')) : app.use(morgan('dev'));
+process.env.HOST_ENV === 'PROD' ? app.use(morgan('prod')) : app.use(morgan('dev'));
 
 app.use(bodyParser.json());
 app.use(router);
