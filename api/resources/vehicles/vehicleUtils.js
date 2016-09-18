@@ -1,3 +1,7 @@
+// Utilizes joi for input validation. The joi
+// validation schema could be defined for the entire smartcar
+// api and stored as an implementation file.
+const joi = require('joi');
 const routes = {
     'GET': {
         'doors': true,
@@ -6,7 +10,13 @@ const routes = {
         '': true
     },
     'POST': {
-        'engine': true
+        'engine': {
+            // This section defines the required parameters in the body of the
+            // post request for the related route.
+            'schema': joi.object().keys({
+                'action': joi.string().valid(['START', 'STOP'])
+            })
+        }
     }
 };
 
@@ -19,12 +29,12 @@ module.exports.determineVehicleMake = function(id) {
     return 'gm';
 };
 
-module.exports.determineValidRoute = function(method, route) {
-    if (routes[method]) {
-        return routes[method][route];
+module.exports.isValidInput = function(method, route, body) {
+    if (method === 'GET') {
+        return !!routes[method][route];
+    } else if (method === 'POST') {
+        // Validates route and input using joi
+        return !!routes[method][route] && !joi.validate(body, routes[method][route].schema).error;
     }
 };
 
-module.exports.getErrorMessage = function(err) {
-    return 'Things are bad.';
-};
