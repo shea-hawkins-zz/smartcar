@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
 const router = require('./router');
 
 const app = express();
@@ -10,6 +11,7 @@ const port = 80;
 
 process.env.HOST_ENV === 'prod' ? app.use(morgan('prod')) : app.use(morgan('dev'));
 
+app.use(bodyParser.json());
 app.use(router);
 
 app.listen(port, (err) => {
