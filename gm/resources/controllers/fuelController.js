@@ -1,17 +1,18 @@
 const request = require('request');
 const {
-    formatVehicleInfo
-} = require('../util/format.js');
+    formatFuelInfo
+} = require('../util/format.js')
 const {
-    getVehicleInfo
+    getEnergy
 } = require('../gets/gets.js');
 
 module.exports = function(req, res) {
-    getVehicleInfo(req.params.id)
+    getEnergy(req.params.id)
         .then(info => {
-            res.send(formatVehicleInfo(info));
+            res.send(formatFuelInfo(info.data, 'tankLevel'));
         })
         .catch(err => {
+            console.log(err);
             res.status(400).send(err);
         });
 };
