@@ -34,7 +34,9 @@ router.use('/:id/:route*?', (req, res) => {
         new Promise((resolve, reject) => {
             request({
                 url: `http://smartcar-${make}/${id}/${route}`, 
-                method: req.method
+                method: req.method,
+                body: req.body,
+                json: true
             }, (err, res) => {
                 err ? reject(err) : resolve(res);
             });

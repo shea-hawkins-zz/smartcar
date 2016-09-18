@@ -3,8 +3,10 @@ const routes = {
         'doors': true,
         'fuel': true,
         'battery': true,
-        'engine': true,
         '': true
+    },
+    'POST': {
+        'engine': true
     }
 };
 
