@@ -8,7 +8,6 @@ const {
 
 
 module.exports = function(req, res) {
-    console.log(req.body);
     toggleEngine(req.params.id, req.body.action)
         .then(info => {
             res.send(formatEngineInfo(info));

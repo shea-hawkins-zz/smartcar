@@ -1,3 +1,5 @@
+// Top level router maps the smartcar routes to the gm controllers.
+
 const router = require('express').Router();
 const rootController = require('./resources/controllers/rootController.js');
 const doorController = require('./resources/controllers/doorController.js');

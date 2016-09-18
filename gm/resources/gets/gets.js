@@ -1,3 +1,5 @@
+// All of the GM gets are defined here.
+
 const request = require('request');
 
 module.exports.getVehicleInfo = function(id) {

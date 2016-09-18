@@ -1,5 +1,4 @@
-// Utilizes joi for input validation. The joi
-// validation schema could be defined for the entire smartcar
+// Utilizes joi for input validation. The joi validation schema could be defined for the entire smartcar
 // api and stored as an implementation file.
 const joi = require('joi');
 const routes = {

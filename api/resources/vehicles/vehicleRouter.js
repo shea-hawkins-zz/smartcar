@@ -26,7 +26,6 @@ router.use('/:id/:route*?', (req, res) => {
     const route = req.params.route || '';
     const make = res.locals.make;
     const id = req.params.id;
-    console.log(`http://smartcar-${make}/${id}/${route}`);
     if (isValidInput(req.method, route, req.body)) {
         // If the route is a valid Smartcar route, it will forward
         // the request to the appropriate translation service.
@@ -42,11 +41,11 @@ router.use('/:id/:route*?', (req, res) => {
                 err ? reject(err) : resolve(res);
             });
         })
-            .then(serviceRes => res.send(serviceRes.body))
-            .catch(err => res.status(500).send({
-                error: `The service for ${make} vehicles returned an error. Please reference the 'api-error' property for more details.`,
-                "api-error": JSON.stringify(err)
-            }));
+        .then(serviceRes => res.send(serviceRes.body))
+        .catch(err => res.status(500).send({
+            error: `The service for ${make} vehicles returned an error. Please reference the 'api-error' property for more details.`,
+            "api-error": JSON.stringify(err)
+        }));
     } else {
         res.status(400).send({
             error: "An invalid input was detected. Please ensure that your route/body follow API specifications and retry."

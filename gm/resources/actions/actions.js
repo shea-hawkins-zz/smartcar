@@ -1,5 +1,7 @@
 const request = require('request');
 
+// Actions as defined by the gm API
+
 module.exports.toggleEngine = function(id, action) {
     let command;
     if (action.toLowerCase() === 'start') {

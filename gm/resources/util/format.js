@@ -1,3 +1,5 @@
+// This utility contains the functions to format the data received from gm into the smartcar format.
+
 module.exports.formatDoorInfo = function(info) {
     return info.data.doors.values.map(door => {
         let locked = door.locked.value.toLowerCase() === 'true';

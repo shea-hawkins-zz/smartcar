@@ -9,6 +9,7 @@ const {
 module.exports = function(req, res) {
     getEnergy(req.params.id)
         .then(info => {
+            // Includes a switch in order to format to fuel information
             res.send(formatFuelInfo(info, 'tankLevel'));
         })
         .catch(err => {
