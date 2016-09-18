@@ -1,0 +1,1 @@
+docker exec smartcar_smartcar-api_1 bash -c "npm run test" && docker exec smartcar_smartcar-gm_1 bash -c "npm run test"
