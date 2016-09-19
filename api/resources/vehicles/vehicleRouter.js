@@ -38,11 +38,16 @@ router.use('/:id/:route*?', (req, res) => {
                 body: req.body,
                 json: true
             }, (err, res) => {
-                err ? reject(err) : resolve(res);
+                if (err) {
+                    reject(err);
+                } else if (res.statusCode !== 200) {
+                    reject(res.body);
+                }
+                resolve(res);
             });
         })
         .then(serviceRes => res.send(serviceRes.body))
-        .catch(err => res.status(500).send({
+        .catch(err => res.status(400).send({
             error: `The service for ${make} vehicles returned an error. Please reference the 'api-error' property for more details.`,
             "api-error": JSON.stringify(err)
         }));

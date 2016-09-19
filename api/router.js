@@ -7,7 +7,7 @@ const vehicleRouter = require('./resources/vehicles/vehicleRouter.js');
 router.use('/vehicle', vehicleRouter);
 
 router.use('/*', (req, res) => {
-    res.sendStatus(400).send({
+    res.status(400).send({
         error: "An invalid route was received. Please ensure that your request route is within the Smartcar specifications."
     });
 });
