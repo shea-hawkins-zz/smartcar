@@ -9,7 +9,7 @@ const {
 
 /************ ACTION TESTS ***********************/
 
-describe('Verify toggling engine\n-------------------------\n', () => {
+describe('Toggling engine\n-------------------------\n', () => {
     it('should turn the engine on', (done) => {
         toggleEngine('1234', 'START')
         .then(res => {

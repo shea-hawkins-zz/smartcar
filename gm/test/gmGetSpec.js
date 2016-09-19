@@ -11,7 +11,7 @@ const {
 
 /************ GET TESTS ***********************/
 
-describe('Getting vehicle details\n-------------------------\n', () => {
+describe('Vehicle details\n-------------------------\n', () => {
     it('should get general vehicle information', (done) => {
         getVehicleInfo('1234')
         .then(res => {
