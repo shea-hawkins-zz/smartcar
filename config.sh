@@ -3,3 +3,4 @@
 
 # PROD | DEV 
 export HOST_ENV="DEV"
+export HOST_PORT="3000"
