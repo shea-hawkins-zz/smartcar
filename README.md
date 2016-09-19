@@ -8,8 +8,7 @@ This repository implements the Smartcar API and the GM->Smartcar translation ser
 
 The only requirement for the repository is that the host machine has Docker installed with a recent version of docker-compose.
 
-1) Clone repository.
-2) Run 'bash start.sh' 
+- Run 'bash start.sh' 
 
 # Testing:
-1) With the server running, run 'bash test.sh'
+- With the server running, run 'bash test.sh'
