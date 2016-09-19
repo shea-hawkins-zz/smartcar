@@ -4,6 +4,6 @@ services:
     - docker
 
 before_install:
-    - bash start.sh
+    - bash -c ". config.sh && docker-compose up -d"
 
 script: bash -c "sleep 30s && test.sh"
