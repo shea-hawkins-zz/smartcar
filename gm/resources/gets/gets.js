@@ -19,6 +19,13 @@ module.exports.getVehicleInfo = function(id) {
         })
     })
     .then(res => JSON.parse(res.body))
+    .then(body => {
+        if (body.status === '200') {
+            return body;
+        } else {
+            throw body;
+        }
+    });
 };
 
 module.exports.getSecurityStatus = function(id) {
@@ -34,10 +41,17 @@ module.exports.getSecurityStatus = function(id) {
                 'Content-type': 'application/json'
             }
         }, (err, res) => {
-            err ? reject(err) : resolve(res);
+            err ? reject(err) : resolve(res)
         })
     })
     .then(res => JSON.parse(res.body))
+    .then(body => {
+        if (body.status === '200') {
+            return body;
+        } else {
+            throw body;
+        }
+    });
 };
 
 module.exports.getEnergy = function(id) {
@@ -57,4 +71,11 @@ module.exports.getEnergy = function(id) {
         })
     })
     .then(res => JSON.parse(res.body))
+    .then(body => {
+        if (body.status === '200') {
+            return body;
+        } else {
+            throw body;
+        }
+    });
 };

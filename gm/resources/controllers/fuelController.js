@@ -13,7 +13,6 @@ module.exports = function(req, res) {
             res.send(formatFuelInfo(info, 'tankLevel'));
         })
         .catch(err => {
-            console.log(err);
             res.status(400).send(err);
         });
 };

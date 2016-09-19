@@ -27,4 +27,11 @@ module.exports.toggleEngine = function(id, action) {
         })
     })
     .then(res => JSON.parse(res.body))
+    .then(body => {
+        if (body.status === '200') {
+            return body;
+        } else {
+            throw body;
+        }
+    });
 };
